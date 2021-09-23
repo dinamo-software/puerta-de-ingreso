@@ -16,13 +16,28 @@ namespace puerta_de_ingreso.Mediciones
     /// Se pueden almacenar varias longitudes
     /// 
     /// </summary>
+  
     public class MedicionDeLados
     {
         public List<decimal> Longitudes { get; set; }
+        
 
         public MedicionDeLados()
         {
             this.Longitudes = new List<decimal>();
+            
         }
+        
+        public decimal CalcularPerimetro()
+        {
+            return Longitudes.Sum();
+        }
+
+        public decimal CalcularAreaTriangulo()
+        {
+            return (Longitudes[0]* Longitudes[1]) / 2;
+        }
+
+
     }
 }
