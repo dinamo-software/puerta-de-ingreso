@@ -6,9 +6,56 @@ namespace puerta_de_ingreso
     {
         static void Main(string[] args)
         {
-           CalcularPerimetroDeUnCuadrado();
-           CalcularPerimetroDeUnTriangulo();
-           CalcularAreaDeUnTriangulo();
+            string continuar = "S";
+
+            do
+            {
+                var medicion = ObtenerMedicionDeLados();
+                
+                //crear este metodo
+                CalcularPerimetro(medicion);
+                
+                //crear este metodo
+                CalcularArea(medicion);
+
+                Console.WriteLine();
+                Console.WriteLine("Desea continuar? (S/N) ");
+                continuar = Console.ReadLine();
+
+            } while (continuar == "S");
+            
+
+            //no usar estos metodos, los dejo para tenerlos de ejemplo, en la proxima version los borro
+           //CalcularPerimetroDeUnCuadrado();
+           //CalcularPerimetroDeUnTriangulo();
+           //CalcularAreaDeUnTriangulo();
+        }
+
+        private static Mediciones.MedicionDeLados ObtenerMedicionDeLados()
+        {
+            var medicion = new Mediciones.MedicionDeLados();
+            Console.WriteLine("# Iniciamos la medición de los lados de una figura");
+
+            string lado = "";
+            do
+            {
+                Console.Write("Ingrese medida del lado: ");
+                lado = Console.ReadLine();
+                if (string.IsNullOrEmpty(lado)) break;
+
+                long ladoIntTry;
+                if (long.TryParse(lado, out ladoIntTry))
+                {
+                    medicion.Longitudes.Add((int)ladoIntTry);
+                }
+                else
+                {
+                    Console.WriteLine("### ERROR ###");
+                }
+
+            } while (!string.IsNullOrEmpty(lado));
+
+            return medicion;
         }
 
         private static void CalcularPerimetroDeUnCuadrado()
