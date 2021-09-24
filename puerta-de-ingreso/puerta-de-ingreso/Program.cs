@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace puerta_de_ingreso
 {
@@ -11,10 +12,10 @@ namespace puerta_de_ingreso
             do
             {
                 var medicion = ObtenerMedicionDeLados();
-                
+
                 //crear este metodo
                 CalcularPerimetro(medicion);
-                
+
                 //crear este metodo
                 CalcularArea(medicion);
 
@@ -22,13 +23,8 @@ namespace puerta_de_ingreso
                 Console.WriteLine("Desea continuar? (S/N) ");
                 continuar = Console.ReadLine();
 
-            } while (continuar == "S");
-            
+            } while (continuar == "S" | continuar=="s");
 
-            //no usar estos metodos, los dejo para tenerlos de ejemplo, en la proxima version los borro
-           //CalcularPerimetroDeUnCuadrado();
-           //CalcularPerimetroDeUnTriangulo();
-           //CalcularAreaDeUnTriangulo();
         }
 
         private static Mediciones.MedicionDeLados ObtenerMedicionDeLados()
@@ -46,7 +42,7 @@ namespace puerta_de_ingreso
                 long ladoIntTry;
                 if (long.TryParse(lado, out ladoIntTry))
                 {
-                    medicion.Longitudes.Add((int)ladoIntTry);
+                    medicion.Longitudes.Add((int) ladoIntTry);
                 }
                 else
                 {
@@ -58,102 +54,26 @@ namespace puerta_de_ingreso
             return medicion;
         }
 
-        private static void CalcularPerimetroDeUnCuadrado()
+        private static void CalcularPerimetro(Mediciones.MedicionDeLados medicion)
         {
-            var medicion = new Mediciones.MedicionDeLados();
-            string lado = "";
-            Console.WriteLine("Vamos a calcular el perimetro de un cuadrado!");
-            Console.WriteLine("Cuanto mide uno de los lados?");
-            lado = Console.ReadLine();
-            long ladoIntTry;
-            
-            if (long.TryParse(lado, out ladoIntTry))
-            {
-                //almaceno la medicion x4 (asumiendo que es un lado de un cuadrado)
-                medicion.Longitudes.Add((int)ladoIntTry);
-                medicion.Longitudes.Add((int)ladoIntTry);
-                medicion.Longitudes.Add((int)ladoIntTry);
-                medicion.Longitudes.Add((int)ladoIntTry);
-
-                var perimetro = medicion.CalcularPerimetro();
+            var perimetro = medicion.CalcularPerimetro();
                 Console.WriteLine("El perimetro es " + perimetro.ToString());
-
-            }
-            else
-            {
-                Console.WriteLine("No es un valor válido para lado");
-            }
         }
-        
-        private static void CalcularPerimetroDeUnTriangulo()
+
+        private static void CalcularArea(Mediciones.MedicionDeLados medicion)
         {
-            var medicion = new Mediciones.MedicionDeLados();
-            string lado = "";
-            string lado2 = "";
-            string lado3 = "";
-
-            Console.WriteLine("Vamos a calcular el perimetro de un Triangulo!");
-            Console.WriteLine("Cuanto miden los 3 lados?");
-            lado = Console.ReadLine();
-            lado2 = Console.ReadLine();
-            lado3 = Console.ReadLine();
-
-            long ladoIntTry;
-            long ladoIntTry2;
-            long ladoIntTry3;
-
-            if (long.TryParse(lado, out ladoIntTry) && long.TryParse(lado2, out ladoIntTry2) &&
-                long.TryParse(lado3, out ladoIntTry3))
+            // necesito explicacion de LINQ 
+           // var agrupacion = medicion.Longitudes.GroupBy(x => x);
             {
-                //almaceno la medicion x3 (asumiendo que es un lado de un triangulo)
-                medicion.Longitudes.Add((int) ladoIntTry);
-                medicion.Longitudes.Add((int) ladoIntTry2);
-                medicion.Longitudes.Add((int) ladoIntTry3);
+                if (medicion.Longitudes.Count() == 4)
+                {
+                    var perimetro = medicion.CalcularAreaCuadrado();
 
-                var perimetro = medicion.CalcularPerimetro();
-                Console.WriteLine("El perimetro es " + perimetro.ToString());
-            }
-            else
-            {
-                Console.WriteLine("No es un valor válido para lado");
+                    Console.WriteLine("El area es " + perimetro.ToString());
+                 
+                }
             }
         }
-        
-        private static void CalcularAreaDeUnTriangulo()
-        {
-            var medicion = new Mediciones.MedicionDeLados();
-            string lado = "";
-            string lado2 = "";
-           
-
-            Console.WriteLine("Vamos a calcular el Area de un Triangulo!");
-            Console.WriteLine("Cuanto mide la base?");
-            lado = Console.ReadLine();
-            Console.WriteLine("Cuanto mide la altura?");
-            lado2 = Console.ReadLine();
-            
-            
-            long ladoIntTry;
-            long ladoIntTry2;
-
-
-            if (long.TryParse(lado, out ladoIntTry) && long.TryParse(lado2, out ladoIntTry2)) 
-            {
-                //almaceno la medicion de los lados
-                medicion.Longitudes.Add((int)ladoIntTry);
-                medicion.Longitudes.Add((int)ladoIntTry2);
-
-                //propuesta: calcular el area usando un método que utilize el objeto medicion
-               
-                var area = medicion.CalcularAreaTriangulo();
-                Console.WriteLine("El Area es " + area.ToString() );
-            }
-            else
-            {
-                Console.WriteLine("No es un valor válido para lado");
-            }
-        }
-
     }
 }
     

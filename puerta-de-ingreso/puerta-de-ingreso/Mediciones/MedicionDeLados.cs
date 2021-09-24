@@ -28,15 +28,20 @@ namespace puerta_de_ingreso.Mediciones
             
         }
         
+        
         public decimal CalcularPerimetro()
         {
             return Longitudes.Sum();
         }
-
-        public decimal CalcularAreaTriangulo()
+        
+        
+        public decimal CalcularAreaCuadrado()
         {
-            return (Longitudes[0]* Longitudes[1]) / 2;
+            return (Longitudes[0] *  Longitudes[0] );
         }
+        
+       
+        
 
 
     }
