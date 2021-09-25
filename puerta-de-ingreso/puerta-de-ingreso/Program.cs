@@ -12,12 +12,13 @@ namespace puerta_de_ingreso
             do
             {
                 var medicion = ObtenerMedicionDeLados();
+                var figura = Factory.Create(medicion);
 
-                //crear este metodo
-                CalcularPerimetro(medicion);
+                var perimetro = figura.CalcularPerimetro();
+                Console.WriteLine("El perimetro es " + perimetro.ToString());
 
-                //crear este metodo
-                CalcularArea(medicion);
+                var area = figura.CalcularArea();
+                Console.WriteLine("El area es " + area.ToString());
 
                 Console.WriteLine();
                 Console.WriteLine("Desea continuar? (S/N) ");
@@ -54,26 +55,6 @@ namespace puerta_de_ingreso
             return medicion;
         }
 
-        private static void CalcularPerimetro(Mediciones.MedicionDeLados medicion)
-        {
-            var perimetro = medicion.CalcularPerimetro();
-                Console.WriteLine("El perimetro es " + perimetro.ToString());
-        }
-
-        private static void CalcularArea(Mediciones.MedicionDeLados medicion)
-        {
-            // necesito explicacion de LINQ 
-           // var agrupacion = medicion.Longitudes.GroupBy(x => x);
-            {
-                if (medicion.Longitudes.Count() == 4)
-                {
-                    var perimetro = medicion.CalcularAreaCuadrado();
-
-                    Console.WriteLine("El area es " + perimetro.ToString());
-                 
-                }
-            }
-        }
     }
 }
     

@@ -39,10 +39,6 @@ namespace puerta_de_ingreso.Mediciones
         {
             return (Longitudes[0] *  Longitudes[0] );
         }
-        
-       
-        
-
 
     }
 }
