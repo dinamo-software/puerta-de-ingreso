@@ -1,4 +1,5 @@
-﻿using System;
+﻿using puerta_de_ingreso.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,23 @@ namespace puerta_de_ingreso
     {
         public static Figura Create(Mediciones.MedicionDeLados medicion)
         {
-            int cantidad = medicion.Longitudes.Count;
-            
-            return new Figura(cantidad);
 
+            if (medicion.CantidadLados == 3)
+            {
+                return new Triangulo(medicion);
+            }
+            else if (medicion.CantidadLados == 4)
+            {
+                return new Rectangulo(medicion);
+            }
+            else if (medicion.CantidadLados == 5)
+            {
+                return new Pentagono(medicion);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

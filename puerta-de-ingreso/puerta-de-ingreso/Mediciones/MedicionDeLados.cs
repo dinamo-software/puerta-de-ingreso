@@ -20,7 +20,12 @@ namespace puerta_de_ingreso.Mediciones
     public class MedicionDeLados
     {
         public List<decimal> Longitudes { get; set; }
-        
+
+        public int CantidadLados {
+            get {
+                return this.Longitudes.Count;
+            }
+        }
 
         public MedicionDeLados()
         {

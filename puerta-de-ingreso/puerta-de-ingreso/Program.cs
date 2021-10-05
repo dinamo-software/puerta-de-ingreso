@@ -14,11 +14,18 @@ namespace puerta_de_ingreso
                 var medicion = ObtenerMedicionDeLados();
                 var figura = Factory.Create(medicion);
 
-                var perimetro = figura.CalcularPerimetro();
-                Console.WriteLine("El perimetro es " + perimetro.ToString());
+                if (figura != null)
+                {
+                    var tipo = figura.ObtenerTipo();
+                    Console.WriteLine("La figura es un " + tipo);
 
-                var area = figura.CalcularArea();
-                Console.WriteLine("El area es " + area.ToString());
+                    var perimetro = figura.CalcularPerimetro();
+                    Console.WriteLine("El perimetro es " + perimetro.ToString());
+
+                    var area = figura.CalcularArea();
+                    Console.WriteLine("El area es " + area.ToString());
+                }
+                
 
                 Console.WriteLine();
                 Console.WriteLine("Desea continuar? (S/N) ");

@@ -7,25 +7,32 @@ using puerta_de_ingreso.Mediciones;
 
 namespace puerta_de_ingreso.Modelos
 {
-    class Triangulo : Figura
+    public class Triangulo : Figura //herencia
     {
-        public Triangulo(int cantidad) : base(cantidad)
+        private static string TipoDeFigura = @"Triangulo";
+
+        public Triangulo(MedicionDeLados medicion) : base(medicion) // herencia
         {
             // la unica variable que tiene figura es la cantidad de lados,  ¿como llamo individualmente a  cada lado? 
         }
-        
-        public override decimal CalcularArea()
+
+        public override string ObtenerTipo()
+        {
+            return ObtenerTipo(Triangulo.TipoDeFigura);
+        }
+
+        public override decimal CalcularArea() //polimorfismo
         {
             //como hago para llamar aca a los dos lados que necesito para calcular el area
             return 0;
         }
 
         public override decimal CalcularPerimetro()
-        
+
         {
             //como le pido a medicion de lados desde aca los lados de la figura siendo que en figura no se guardan los lados sino en medicion de lados
-
-   
+            return 3;
+        }
     }
 }
 
