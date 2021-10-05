@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using puerta_de_ingreso.Modelos;
 
 namespace puerta_de_ingreso
 {
@@ -15,12 +11,13 @@ namespace puerta_de_ingreso
             this.cantidad = cantidad;    
         }
 
-        public decimal CalcularArea()
+        public virtual decimal CalcularArea()
         {
             return 0;
         }
 
-        public decimal CalcularPerimetro()
+
+        public virtual decimal CalcularPerimetro()
         {
             return 0;
         }
