@@ -20,21 +20,30 @@ namespace puerta_de_ingreso.Modelos
 
         public override decimal CalcularArea() //polimorfismo
         {
-            var areaDeFigura = base.CalcularArea();
+            {
+                decimal area;
+                if (this.Medicion.Longitudes[1] != this.Medicion.Longitudes[2])
 
-            areaDeFigura = areaDeFigura + 10;
+                {
+                    area = this.Medicion.Longitudes[1] * this.Medicion.Longitudes[2];
 
-            //como hago para llamar aca a los dos lados que necesito para calcular el area
-            return areaDeFigura;
+                }
+                else
+                {
+                    area = this.Medicion.Longitudes[1] * this.Medicion.Longitudes[3];
+
+                }
+
+                return area;
+            }
+
         }
 
         public override decimal CalcularPerimetro() //polimorfismo
-
         {
-            //como le pido a medicion de lados desde aca los lados de la figura siendo que en figura no se guardan los lados sino en medicion de lados
-            return 4;
+            decimal perimetro = this.Medicion.Longitudes.Sum();
+            return perimetro;
         }
-
-
     }
 }
+        

@@ -23,15 +23,18 @@ namespace puerta_de_ingreso.Modelos
 
         public override decimal CalcularArea() //polimorfismo
         {
-            //como hago para llamar aca a los dos lados que necesito para calcular el area
+            //area de pentagono REGULAR (todos sus lados son iguales)
+            decimal apotema;
+            decimal anguloTeta;
+            
             return 0;
         }
 
         public override decimal CalcularPerimetro()
 
         {
-            //como le pido a medicion de lados desde aca los lados de la figura siendo que en figura no se guardan los lados sino en medicion de lados
-            return 5;
+            decimal perimetro = this.Medicion.Longitudes.Sum();
+            return perimetro;
         }
     }
 }

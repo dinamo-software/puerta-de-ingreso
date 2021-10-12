@@ -23,16 +23,32 @@ namespace puerta_de_ingreso.Modelos
 
         public override decimal CalcularArea() //polimorfismo
         {
-            //como hago para llamar aca a los dos lados que necesito para calcular el area
-            return 0;
+            decimal semiperimetro;
+            double res;
+            decimal area;
+            
+            semiperimetro = (this.Medicion.Longitudes[1] + this.Medicion.Longitudes[2] + this.Medicion.Longitudes[3]) /
+                            2;
+
+            var valorABuscarRaiz = semiperimetro * (semiperimetro - this.Medicion.Longitudes[1]) * (semiperimetro - this.Medicion.Longitudes[2]) *
+                (semiperimetro - this.Medicion.Longitudes[3]);
+            
+            res =  Math.Sqrt(Convert.ToDouble(valorABuscarRaiz));
+            area = Convert.ToDecimal(res);
+            return area;
         }
+
 
         public override decimal CalcularPerimetro()
 
         {
-            //como le pido a medicion de lados desde aca los lados de la figura siendo que en figura no se guardan los lados sino en medicion de lados
-            return 3;
+            decimal perimetro = this.Medicion.Longitudes.Sum();
+            return perimetro;
         }
+
     }
 }
+
+    
+
 
