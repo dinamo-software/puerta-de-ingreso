@@ -22,15 +22,15 @@ namespace puerta_de_ingreso.Modelos
         {
             {
                 decimal area;
-                if (this.Medicion.Longitudes[1] != this.Medicion.Longitudes[2])
+                if (this.Medicion.Longitudes[0] != this.Medicion.Longitudes[1])
 
                 {
-                    area = this.Medicion.Longitudes[1] * this.Medicion.Longitudes[2];
+                    area = this.Medicion.Longitudes[0] * this.Medicion.Longitudes[1];
 
                 }
                 else
                 {
-                    area = this.Medicion.Longitudes[1] * this.Medicion.Longitudes[3];
+                    area = this.Medicion.Longitudes[0] * this.Medicion.Longitudes[2];
 
                 }
 

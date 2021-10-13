@@ -24,10 +24,10 @@ namespace puerta_de_ingreso.Modelos
         public override decimal CalcularArea() //polimorfismo
         {
             //area de pentagono REGULAR (todos sus lados son iguales)
-            decimal apotema;
-            decimal anguloTeta;
-            
-            return 0;
+            double perimetro = Convert.ToDouble(this.Medicion.Longitudes.Sum());
+            double apotema = Convert.ToDouble(this.Medicion.Longitudes[0]) / (1.45); // 1.45 surge de calcular el angulo Seno  que es 360 / 5 Lados * 2;
+            double area = (perimetro * apotema) / 2;
+            return Convert.ToDecimal(area);
         }
 
         public override decimal CalcularPerimetro()

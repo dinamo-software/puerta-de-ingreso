@@ -27,11 +27,11 @@ namespace puerta_de_ingreso.Modelos
             double res;
             decimal area;
             
-            semiperimetro = (this.Medicion.Longitudes[1] + this.Medicion.Longitudes[2] + this.Medicion.Longitudes[3]) /
+            semiperimetro = (this.Medicion.Longitudes[0] + this.Medicion.Longitudes[1] + this.Medicion.Longitudes[2]) /
                             2;
 
-            var valorABuscarRaiz = semiperimetro * (semiperimetro - this.Medicion.Longitudes[1]) * (semiperimetro - this.Medicion.Longitudes[2]) *
-                (semiperimetro - this.Medicion.Longitudes[3]);
+            var valorABuscarRaiz = semiperimetro * (semiperimetro - this.Medicion.Longitudes[0]) * (semiperimetro - this.Medicion.Longitudes[1]) *
+                (semiperimetro - this.Medicion.Longitudes[2]);
             
             res =  Math.Sqrt(Convert.ToDouble(valorABuscarRaiz));
             area = Convert.ToDecimal(res);
